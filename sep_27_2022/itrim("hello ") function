@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+std::vector<std::string> itrim(const std::string &);
+
+int main()
+{
+        std::string str = " hello";
+        std::vector<std::string> vec = itrim(str);
+        for (auto i : vec)
+        {
+                std::cout << i;
+        }
+}
+
+std::vector<std::string> itrim(const std::string &str)
+{
+        std::vector <std::string> vec;
+        std::string st = "";
+        int index = 0;
+        while (str[index] == ' ')
+        {
+                ++index;
+        }
+        while (str[index] != '\0')
+        {
+                st += str[index];
+                ++index;
+        }
+        vec.push_back(st);
+        st = "";
+        return vec;
+}
+~        
