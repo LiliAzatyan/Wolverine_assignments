@@ -1,0 +1,17 @@
+#include <iostream>
+
+int main()
+{
+        const int SIZE = 10;
+        char arr[SIZE] = {};
+        std::cout << "Please input the string: " << std::endl;
+        std::cin >> arr;
+        for (int i = 0; i < SIZE; ++i)
+        {
+                if (arr[i] >= 'A' && arr[i] >= 'Z')
+                {
+                        arr[i] -= 32;
+                }
+        }
+        std::cout << arr;
+}
