@@ -8,7 +8,6 @@ int main()
 {
 	std::string str;
 	std::fstream file1;
-	std::fstream file2;
 	file1.open("my_file.txt");
 	if (file1.is_open())
 	{
@@ -26,6 +25,16 @@ int main()
 
 void read(const std::string& str)
 {
+	std::fstream file2;
+	file2.open("copy_file.txt");
+	if (file2.is_open())
+	{
+		std::cout << "This file is open: " << std::endl;
+	}
+	else
+	{
+		std::cout << "This file is not open: " << std::endl;
+	}
 	int index = 0;
 	std::string st = "";
 	if (str[index] == ' ')
@@ -44,23 +53,33 @@ void read(const std::string& str)
 
 		}
 	}
-	
+	std::cout << "st1: {" << st << '}' << std::endl;
+	file2 << st << '\n';
+	st.clear();
+
 	while (str[index] == ' ')
 	{
 		++index;
 	}
-	while (str[index] != ' ')
+	while (str[index] != ',' && str[index] != ' ')
 	{
 		st += str[index];
 		++index;
 	}
-	while (str[index] == ' ' && str[index] == ',')
+	std::cout << "st2: {" << st << '}' << std::endl;
+	file2 << st << '\n';
+	st.clear();
+
+	while (str[index] == ' ' || str[index] == ',')
 	{
 		++index;
 	}
-	while (str[index] != ' ')
+	while (str[index] != ' ' && str[index] != '\0')
 	{
 		st += str[index];
 		++index;
 	}
+	std::cout << "st3: {" << st << '}' << std::endl;
+	file2 << st << '\n';
+
 }
