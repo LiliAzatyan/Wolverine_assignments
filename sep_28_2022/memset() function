@@ -1,0 +1,22 @@
+#include <iostream>
+
+void memset(void*, char, size_t);
+
+int main()
+{
+  const int size = 5;
+  char arr[size] = {};
+  memset(arr, 'l', size);
+  std::cout << arr << std::endl;
+}
+
+void memset(void* char, char value, size_t count)
+{
+  char* pt = (char*) arr;
+  int i = 0;
+  while (i != count)
+  {
+    *(pt + i) = value;
+    ++i;
+  }
+}
