@@ -1,0 +1,66 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void read(const std::string&);
+
+int main()
+{
+	std::string str;
+	std::fstream file1;
+	std::fstream file2;
+	file1.open("my_file.txt");
+	if (file1.is_open())
+	{
+		while (getline(file1, str))
+		{
+			read(str);
+		}
+	}
+	else
+	{
+		std::cout << "File is not open: " << std::endl;
+	}
+
+}
+
+void read(const std::string& str)
+{
+	int index = 0;
+	std::string st = "";
+	if (str[index] == ' ')
+	{
+		while (str[index] == ' ')
+		{
+			++index;
+		}
+	}
+	if (str[index] != ' ')
+	{
+		while (str[index] != ' ')
+		{
+			st += str[index];
+			++index;
+
+		}
+	}
+	
+	while (str[index] == ' ')
+	{
+		++index;
+	}
+	while (str[index] != ' ')
+	{
+		st += str[index];
+		++index;
+	}
+	while (str[index] == ' ' && str[index] == ',')
+	{
+		++index;
+	}
+	while (str[index] != ' ')
+	{
+		st += str[index];
+		++index;
+	}
+}
