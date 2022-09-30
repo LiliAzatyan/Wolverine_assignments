@@ -1,0 +1,36 @@
+#include <iostream>
+#include <map>
+
+enum class Colors{Red, Green, Blue, Black, Orange};
+
+void toString(Colors);
+Colors toEnum(std::string);
+
+int main()
+{
+	toString(Colors::Green);
+	int result = (int)toEnum("Blue");
+	std::cout << result << std::endl;
+}
+
+void toString(Colors Co)
+{
+	std::map<Colors, std::string> M;
+	M[Colors::Red] = "Red";
+	M[Colors::Green] = "Green";
+	M[Colors::Blue] = "Blue";
+	M[Colors::Black] = "Black";
+	M[Colors::Orange] = "Orange";
+	std::cout << M[Co] << std::endl;
+}
+
+Colors toEnum(std::string Color)
+{
+	std::map<std::string, Colors> C;
+	C["Red"] = Colors::Red;
+	C["Green"] = Colors::Green;
+	C["Blue"] = Colors::Blue;
+	C["Black"] = Colors::Black;
+	C["Orange"] = Colors::Orange;
+	return C[Color];
+}
